@@ -17,7 +17,7 @@ x3 = [2.7, 0.05];
 % % w_a(tc > 0.74 & tc <= 1.08) = 0;
 % % w_a(tc > 1.08 & tc <= 1.69) = -10.9;
 
-load('X.mat');load('A.mat');load('AxB.mat');load('AyB.mat')
+load('GroundTruth/X.mat');load('GroundTruth/A.mat');load('GroundTruth/AxB.mat');load('GroundTruth/AyB.mat')
 
 w = X(1,1:190991);     w_v = X(2,1:190991);     w_a = A(1,1:190991);      orit = X(1,1:190991);  
 W = NaN(1,length(td)); W_V = NaN(1,length(td)); W_A = NaN(1,length(td));  Orient = NaN(1,length(td));

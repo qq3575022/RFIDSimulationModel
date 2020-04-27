@@ -6,8 +6,8 @@ sim = 2; % sim = 1 for 1D; sim = 2 for 2D
 if sim == 1
     clc, clear, close all
     
-    load('PropGp1DPositionData.mat')
-    load('PropGp1DVelocityAccelerationData.mat')
+    load('Measurement/PropGp1DPositionData.mat')
+    load('Measurement/PropGp1DVelocityAccelerationData.mat')
     
     ta = 0.41;
     tb = 1.41;
@@ -111,7 +111,7 @@ if sim == 1
 else
     
     clc, clear, close all
-    load('yVectorData.mat')
+    load('Measurement/yVectorData.mat')
     
     offset = 0;
     for n = 2:1:length(psif1)
