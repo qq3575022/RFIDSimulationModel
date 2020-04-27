@@ -1,7 +1,7 @@
 clc, clear, close all
 
 global sim
-sim = 1; % sim = 1 for 1D; sim = 2 for 2D
+sim = 2; % sim = 1 for 1D; sim = 2 for 2D
 
 if sim == 1
     clc, clear, close all
@@ -147,7 +147,9 @@ else
     Gt = 14.62;    % tag's antenna gain
     X = 0.85;      % polarization mismatch
     M = 4;         % load modulation factor of the tag
-    f = 5.8*10^9;
+    f1 = 5.79*10^9;
+    f2 = 5.80*10^9;
+    f3 = 5.81*10^9;
 
     % Parameters of reader
     PT = 1;         % reader's transmitted power
@@ -179,9 +181,9 @@ else
     r_sim3 = NaN(1,length(td));rdot_sim3 = NaN(1,length(td));diff3 = NaN(1,length(td));
   
     for k = 1:1:length(td)-1  
-    [H1(k+1),phi1(k+1),phi_mu1(k+1),r_sim1(k+1),rdot_sim1(k+1),diff1(k+1)] = noisysim(x1,f,Gt,M,X,PT,GT,GR,R,sigma,1,k,z,z_prev,T);
-    [H2(k+1),phi2(k+1),phi_mu2(k+1),r_sim2(k+1),rdot_sim2(k+1),diff2(k+1)] = noisysim(x2,f,Gt,M,X,PT,GT,GR,R,sigma,2,k,z,z_prev,T);
-    [H3(k+1),phi3(k+1),phi_mu3(k+1),r_sim3(k+1),rdot_sim3(k+1),diff3(k+1)] = noisysim(x3,f,Gt,M,X,PT,GT,GR,R,sigma,3,k,z,z_prev,T);   
+    [H1(k+1),phi1(k+1),phi_mu1(k+1),r_sim1(k+1),rdot_sim1(k+1),diff1(k+1)] = noisysim(x1,f1,Gt,M,X,PT,GT,GR,R,sigma,1,k,z,z_prev,T);
+    [H2(k+1),phi2(k+1),phi_mu2(k+1),r_sim2(k+1),rdot_sim2(k+1),diff2(k+1)] = noisysim(x2,f2,Gt,M,X,PT,GT,GR,R,sigma,2,k,z,z_prev,T);
+    [H3(k+1),phi3(k+1),phi_mu3(k+1),r_sim3(k+1),rdot_sim3(k+1),diff3(k+1)] = noisysim(x3,f3,Gt,M,X,PT,GT,GR,R,sigma,3,k,z,z_prev,T);   
     end
     
     H1(1) = H1(2);phi_mu1(1) = phi_mu1(2);r_sim1(1) = r_sim1(2);rdot_sim1(1)=0;
@@ -242,7 +244,8 @@ else
     subplot(6,1,6),plot(td,abs(cali_errorsim3),'LineWidth',2);title('Absolute error r3');xlabel('t [s]');ylabel('|e| [m]');legend('sim error r3');title('Simulated Absolute Radial Error from Reader $\#3$','interpreter','latex')
 
 
-    % Compare measurement position, velocity and accelerqtion with ground truth
+%     Addtional Graphs: Uncomment to visualize.
+%     Compare measurement position, velocity and accelerqtion with ground truth
 %     figure
 %     subplot(3,1,1),plot(td,r1f,'LineWidth',2);hold on;plot(td,rr(1,:),'LineWidth',2);legend('measurement', 'ground truth');title('r1')
 %     subplot(3,1,2),plot(td,r2f,'LineWidth',2);hold on;plot(td,rr(3,:),'LineWidth',2);legend('measurement', 'ground truth');title('r2')
