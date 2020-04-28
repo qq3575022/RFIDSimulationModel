@@ -22,3 +22,4 @@ Also, ground truth states can also be loaded with .m files
 noisysim.m
 ```
 The simulation model is based on phase unwrapping - concatenating phase in 2\pi periods. Ways of concatenation for different routes can be changed in noisysim.m
+*Any feedbacks and discussions of the model are welcome!
